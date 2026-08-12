@@ -1,6 +1,6 @@
 ---
 name: review-to-ship
-description: Calibrate domain knowledge, rebuild a task from first principles, run bounded adversarial review, reject unnecessary criticism, verify the core path, and stop analyzing once the evidence-based shipping threshold is met. Use for plans, code, automations, AI agents, content, products, and business decisions when the user asks to challenge assumptions, red-team a proposal, avoid AI agreement or endless nitpicking, decide which findings matter, escape analysis paralysis, define a stopping rule, or move from review to execution.
+description: Calibrate domain knowledge, rebuild a task from first principles, run bounded adversarial review, reject unnecessary criticism, verify the core path, and stop analyzing once the evidence-based shipping threshold is met. Use for plans, code, automations, AI agents, content, products, and business decisions when the user asks to challenge assumptions, red-team a proposal, avoid AI agreement or endless nitpicking, decide which findings matter, escape analysis paralysis, define a stopping rule, or move from review to execution. Also trigger for Chinese requests such as 审完就干, 第一性原理, 对抗式审查, 别再挑刺, or 直接执行.
 ---
 
 # Review to Ship
@@ -14,6 +14,12 @@ Do not let the same unsupported model output act as proposer, critic, judge, and
 Use this sequence:
 
 `calibrate -> rebuild -> attack -> adjudicate -> fix -> verify -> ship`
+
+## The expertise trap
+
+Correctness does not become higher because the user is unfamiliar with the domain. Unfamiliarity only makes errors harder to notice. Partial knowledge is often the riskiest state: enough vocabulary to steer the model, not enough authority to verify it.
+
+Classify verification ability before trusting fluency. For unfamiliar or partial domains, name an external arbiter and use reversible experiments; the model's confidence, detail, or familiar terminology is not evidence.
 
 ## 1. Calibrate the decision environment
 
@@ -112,6 +118,19 @@ Match the claim to its evidence:
 
 Do not use market response to prove technical safety or factual correctness. Do not use a polished AI explanation as independent evidence for another AI explanation.
 
+## Evidence ladder
+
+Prefer evidence in this order:
+
+1. direct end-to-end result;
+2. reproducible test or calculation;
+3. current primary source or original data;
+4. qualified independent review;
+5. AI reasoning;
+6. intuition.
+
+Installation, compilation, HTTP 200, a mocked response, or a polished explanation alone do not prove the user-visible outcome.
+
 ## 7. Enforce the stopping rule
 
 Stop reviewing and ship when all are true:
@@ -129,6 +148,16 @@ Use a stricter threshold as reversibility decreases:
 - `easy`: ship the smallest working version and observe;
 - `costly`: require independent evidence for high-impact assumptions;
 - `irreversible`: require explicit human authorization and qualified review where appropriate.
+
+## Compact example
+
+For “build an AI lead-capture automation”:
+
+- Goal: receive and qualify one real inquiry, not merely “have an automation”.
+- Minimal path: one form -> one record -> one human-reviewed reply.
+- Arbiter: a real test submission and the resulting record and reply.
+- Defer: scale, dashboards, automatic publishing, and multi-agent orchestration.
+- Ship when the test submission completes correctly and no blocker remains.
 
 ## Output contract
 
