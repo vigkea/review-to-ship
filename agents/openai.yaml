@@ -1,0 +1,4 @@
+interface:
+  display_name: "审完就干"
+  short_description: "校准领域认知，筛掉无效挑刺，验证通过就马上开始交付"
+  default_prompt: "Use $review-to-ship to challenge this plan, keep only necessary fixes, verify the core path, and ship."
